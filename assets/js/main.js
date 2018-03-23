@@ -4,13 +4,9 @@ $(document).ready(function() {
     let buttonArray = ['Homer Simpson', 'Bart Simpson', 'Marge Simpson', 'Lisa Simpson', 'Millhouse', 'Smithers', 'Mr Burns', 'Barney Gumble'];
 
     //Functions
-    function init() {
-        printButtons();
-    }
-
     function printButtons() {
         //Emptys the array
-        $('.js-buttons').empty();
+        // $('.js-buttons').empty();
         //Prints array
         for (let i = 0; i < buttonArray.length; i++) {
             let newButton = $('<button type="button" value="' + buttonArray[i]+ '">' + buttonArray[i] + '</button>');
@@ -21,7 +17,7 @@ $(document).ready(function() {
 
     //Events
     //Sets the initial state on page load
-    init();
+    printButtons();
 
     //Submits user input to array and generates button
     $('.submitButton').on('click', function(event) {
@@ -39,7 +35,8 @@ $(document).ready(function() {
     //Button on-click event
     $('.button').on('click', function printGifs() {
         //Empty display div
-        $('.js-gifs').empty();
+        // $('.js-gifs').empty();
+        console.log('yes');
 
         //Pulls name from character clicked
         let charClicked = this.value;
