@@ -33,7 +33,8 @@ $(document).ready(function() {
     });
 
     //Button on-click event
-    $('.button').on('click', function printGifs() {
+    $('.button').on('click', function() {
+    //$('.button').on('click', function printGifs() {
         //Empty display div
         // $('.js-gifs').empty();
         console.log('yes');
