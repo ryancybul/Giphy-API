@@ -6,10 +6,11 @@ $(document).ready(function() {
     //Functions
     function printButtons() {
         //Emptys the array
-        // $('.js-buttons').empty();
+        $('.js-buttons').empty();
         //Prints array
         for (let i = 0; i < buttonArray.length; i++) {
-            let newButton = $('<button type="button" value="' + buttonArray[i]+ '">' + buttonArray[i] + '</button>');
+            let newButton = $('<button>' + buttonArray[i] + '</button>');
+            newButton.attr('charName', buttonArray[i]);
             newButton.addClass('button');
             $('.js-buttons').append(newButton);
         }
@@ -28,32 +29,41 @@ $(document).ready(function() {
         //Pushes new character to Variables
         buttonArray.push(newChar);
         //Clears Text Input
-        $('.js-text-input').val('');
+        $('.js-text-input').val(); 
         printButtons();
     });
 
     //Button on-click event
-    $('.button').on('click', function() {
-    //$('.button').on('click', function printGifs() {
-        //Empty display div
-        // $('.js-gifs').empty();
-        console.log('yes');
-
-        //Pulls name from character clicked
-        let charClicked = this.value;
-        let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + charClicked + "&api_key=Oqf2S0Ti12Rvjts34nggsvkIMbf6WLFg&limit=10";
+    $('.js-buttons').on('click', '.button', function() {
+        //Emptys previous selection
+       $('.js-gifs').empty();
         
+        //Pulls name from character clicked
+        let charClicked = $(this).attr('charName');
+        let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + charClicked + "&api_key=Oqf2S0Ti12Rvjts34nggsvkIMbf6WLFg&limit=10";
+
         $.ajax ({
             url: queryURL,
             method: "GET"
         }).then(function(response) {
         for (let i = 0; i < response.data.length; i++) {
-            let url = response.data[i].images.original.url;
+            let url = response.data[i].images.fixed_height_still.url;
             let charGif = $('<img>');
-            charGif.attr('src', url);
+            charGif.attr({src: url, 'data-state': 'still', class: 'gif', 'data-still': url, 'data-animate': response.data[i].images.fixed_height.url});
             $('.js-gifs').prepend(charGif);
         }
+     });
     });
-    });
+
+    //Image onclick play pause
+    $(document).on('click', '.gif', function(){
+        if ($(this).attr("data-state") === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      });
 
 });
