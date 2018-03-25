@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     //Variables
-    let buttonArray = ['Homer Simpson', 'Bart Simpson', 'Marge Simpson', 'Lisa Simpson', 'Millhouse', 'Smithers', 'Mr Burns', 'Barney Gumble'];
+    let buttonArray = ['Homer Simpson', 'Bart Simpson', 'Marge Simpson', 'Lisa Simpson', 'Millhouse', 'Principal Skinner', 'Mr Burns', 'Barney Gumble'];
 
     //Functions
     function printButtons() {
@@ -26,6 +26,8 @@ $(document).ready(function() {
         event.preventDefault();
         //Stores the input in a variable
         var newChar = $('.js-text-input').val().trim();
+
+        //Zach!!! I don't know why this isn't working now.  Basically I don't want the user to be able to duplicate a button or create an empty button.  
         //Pushes new character to array if not already in array or empty.
         for (let i = 0; i < buttonArray.length; i++) {
             if (newChar.toLowerCase() === buttonArray[i].toLowerCase()) {
@@ -37,6 +39,7 @@ $(document).ready(function() {
                 break;
             }
         }
+
         //Clears Text Input
         $('.js-text-input').val(); 
         printButtons();
