@@ -22,12 +22,21 @@ $(document).ready(function() {
 
     //Submits user input to array and generates button
     $('.submitButton').on('click', function(event) {
-        //Preventing the button from trying to submit the form
+        //Preventing the button from trying to refresh the page
         event.preventDefault();
         //Stores the input in a variable
         var newChar = $('.js-text-input').val().trim();
-        //Pushes new character to Variables
-        buttonArray.push(newChar);
+        //Pushes new character to array if not already in array or empty.
+        for (let i = 0; i < buttonArray.length; i++) {
+            if (newChar.toLowerCase() === buttonArray[i].toLowerCase()) {
+            }
+            else if(newChar === ''){
+            }
+            else {
+                buttonArray.push(newChar);
+                break;
+            }
+        }
         //Clears Text Input
         $('.js-text-input').val(); 
         printButtons();
@@ -56,7 +65,7 @@ $(document).ready(function() {
     });
 
     //Image onclick play pause
-    $(document).on('click', '.gif', function(){
+    $('.js-gifs').on('click', '.gif', function(){
         if ($(this).attr("data-state") === "still") {
           $(this).attr("src", $(this).attr("data-animate"));
           $(this).attr("data-state", "animate");

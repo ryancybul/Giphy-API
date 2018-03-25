@@ -1,0 +1,71 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+body {
+    background-color:#5467AF;
+}
+
+.button {
+    background: #3498db;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 5px;
+    padding: 10px 20px 10px 20px;
+  }
+  
+  .button:hover {
+    background: #3cb0fd;
+  }
+
+  .buttonsDiv {
+      justify-content: center; 
+      display: flex;
+      flex-wrap: wrap;
+      width: 75%;
+  }
+
+  .buttonInput {
+      color: #ffffff;
+      font-family: Arial;
+      font-size: 25px;
+      margin: 10px;
+  }
+
+  .formDiv {
+      align-items: center;
+      justify-content: space-around;
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+  }
+
+  .gifs {
+      justify-content: center;      
+      display: flex;
+      flex-wrap: wrap;
+      width: 95%;
+  }
+
+  .textInput {
+    font-family: Arial;
+    font-size: 16px;
+  }
+
+  .ui-wrapper{
+      display: flex;
+      width: 100%;
+      margin: 0%;
+  }
+
+  .wrapper{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
